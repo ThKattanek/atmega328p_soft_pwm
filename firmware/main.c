@@ -53,6 +53,7 @@ int main(void)
     sei();
 
     uint32_t counter1 = 0;
+    uint8_t counter2 = 0;
 
     uint8_t led0 = 0;
     uint8_t led_nr = 0;
@@ -160,7 +161,7 @@ int main(void)
             loop_mode = 5;
             break;
         case 5:
-            if(counter1 == 200000)
+            if(counter1 == 100000)
             {
                 counter1 = 0;
                 loop_mode = 6;
@@ -180,10 +181,27 @@ int main(void)
             loop_mode = 7;
             break;
         case 7:
-            if(counter1 == 200000)
+            if(counter1 == 100000)
             {
                 counter1 = 0;
-                loop_mode = 4;
+
+                if(counter2 == 4)
+                {
+                    loop_mode = 0;
+                    set_pwm_value(0,0,0);
+                    set_pwm_value(0,1,0);
+                    set_pwm_value(0,2,0);
+                    set_pwm_value(0,3,0);
+                    set_pwm_value(0,4,0);
+                    set_pwm_value(0,5,0);
+                    set_pwm_value(0,6,0);
+                    set_pwm_value(0,7,0);
+                }
+                else {
+                    counter2++;
+                   loop_mode = 4;
+                }
+
             }
             else
                 counter1++;
