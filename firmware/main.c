@@ -188,6 +188,7 @@ int main(void)
                 if(counter2 == 4)
                 {
                     loop_mode = 0;
+                    counter2 = 0;
                     set_pwm_value(0,0,0);
                     set_pwm_value(0,1,0);
                     set_pwm_value(0,2,0);
